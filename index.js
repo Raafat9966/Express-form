@@ -15,12 +15,7 @@ app.get("/", (req, res) => {
 	res.status(200).sendFile(path.join(__dirname + "/public" + "/home.html"));
 });
 
-// app.get("/login", (req, res) => {
-// 	res.status(200).sendFile(path.join(__dirname + "/public" + "/login.html"));
-// });
-
-app.use("/login", express.static("public/login"));
-app.use("/register", express.static("public/register"));
+app.use("/", express.static("public"));
 
 app.post("/login", register);
 app.post("/user", login);
