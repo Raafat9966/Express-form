@@ -24,9 +24,11 @@ const register = (req, res) => {
 		// 		alert("You have been registered"); window.location.href = "/register";
 		// 	</script>`
 		// );
-		res.status(200).sendFile(
-			path.join(__dirname + "../../../public" + "/login" + "/index.html")
-		);
+
+		// res.status(200).sendFile(
+		// 	path.join(__dirname + "../../../public" + "/user" + "/index.html")
+		// );
+		res.status(200).redirect("/user");
 	}
 };
 module.exports = register;

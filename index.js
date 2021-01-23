@@ -4,6 +4,7 @@ const path = require("path");
 
 const register = require("./src/controllers/register");
 const login = require("./src/controllers/login");
+const user = require("./src/controllers/user");
 
 let app = express();
 
@@ -17,7 +18,8 @@ app.get("/", (req, res) => {
 
 app.use("/", express.static("public"));
 
-app.post("/login", register);
-app.post("/user", login);
+app.post("/register", register);
+app.post("/login", login);
+app.post("/user", user);
 
 app.listen(port, () => console.log(`Server run on: http://localhost:${port}`));
