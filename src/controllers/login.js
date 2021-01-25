@@ -3,14 +3,17 @@ const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("src/data/data.json");
 const db = low(adapter);
+const jwt = require("jsonwebtoken");
 
 const login = (req, res) => {
 	let name = req.body.name;
 	let password = req.body.password;
-	const userName = db.get("users").find({ name }).value();
+	const user = db.get("users").find({ name }).value();
 
-	if (userName && userName.password === password) {
-		return res.status(200).redirect("/user");
+	if (user && user.password === password) {
+		const token = jwt.sign({ user }, "secret");
+
+		return res.cookie("name", token).status(200).redirect("/user");
 		// res
 		// 	.status(200)
 		// 	.sendFile(

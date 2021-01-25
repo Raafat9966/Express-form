@@ -28,7 +28,7 @@ const register = (req, res) => {
 		// res.status(200).sendFile(
 		// 	path.join(__dirname + "../../../public" + "/user" + "/index.html")
 		// );
-		res.status(200).redirect("/user");
+		res.status(200).redirect("/login");
 	}
 };
 module.exports = register;
